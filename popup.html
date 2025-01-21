@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Conversation Exporter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Export Conversation</h1>
+        
+        <select id="format" class="format-select">
+            <option value="markdown">Markdown (.md)</option>
+            <option value="pdf">PDF Document (.pdf)</option>
+            <option value="html">HTML Document (.html)</option>
+            <option value="json">JSON (.json)</option>
+        </select>
+
+        <button id="download" class="download-btn">Download</button>
+        
+        <div id="status" class="status"></div>
+    </div>
+
+    <script src="lib/jspdf.umd.min.js"></script>
+    <script src="lib/marked.min.js"></script>
+    <script src="popup.js"></script>
+</body>
+</html>
