@@ -26,11 +26,5 @@
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
-  ],
-  "web_accessible_resources": [
-    {
-      "resources": ["node_modules/jspdf/dist/jspdf.umd.min.js", "lib/marked.min.js"],
-      "matches": ["<all_urls>"]
-    }
   ]
 }

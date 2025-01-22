@@ -1,9 +1,7 @@
-import Storage from './storage.js';
-
 const LICENSE_KEY = 'license_status';
 const USAGE_COUNT = 'usage_count';
 
-export const LicenseManager = {
+const LicenseManager = {
   async checkLicense() {
     const license = await Storage.get(LICENSE_KEY);
     return !!license;
