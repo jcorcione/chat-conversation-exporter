@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Conversation Exporter</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Load libraries from local lib directory -->
+    <script src="lib/jspdf.umd.min.js"></script>
+    <script src="lib/marked.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Export Conversation</h1>
+        
+        <div class="format-wrapper">
+            <label for="format" class="format-label">Export Format:</label>
+            <select id="format" class="format-select">
+                <option value="markdown">Markdown (.md)</option>
+                <option value="pdf">PDF Document (.pdf)</option>
+                <option value="html">HTML Document (.html)</option>
+                <option value="json">JSON (.json)</option>
+            </select>
+        </div>
+
+        <div class="options-wrapper">
+            <label class="options-label">Export Options:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="includeTimestamps" checked>
+                    Include Timestamps
+                </label>
+                <label class="checkbox-label">
+                    <input type="checkbox" id="includeMetadata" checked>
+                    Include Metadata
+                </label>
+            </div>
+        </div>
+
+        <div class="theme-wrapper">
+            <label class="theme-label">Theme Color:</label>
+            <div class="color-picker">
+                <div class="color-option" data-color="#2196f3" style="background-color: #2196f3"></div>
+                <div class="color-option" data-color="#4caf50" style="background-color: #4caf50"></div>
+                <div class="color-option" data-color="#9c27b0" style="background-color: #9c27b0"></div>
+                <div class="color-option" data-color="#ff9800" style="background-color: #ff9800"></div>
+            </div>
+        </div>
+
+        <button id="download" class="download-btn">
+            <span class="btn-text">Download</span>
+            <span class="btn-icon">↓</span>
+        </button>
+        
+        <div id="status" class="status"></div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

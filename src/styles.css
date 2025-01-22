@@ -1,0 +1,189 @@
+:root {
+    --theme-color: #2196f3;
+}
+
+body {
+    width: 320px;
+    padding: 16px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+h1 {
+    font-size: 18px;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+}
+
+.format-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.format-label {
+    font-size: 14px;
+    color: #666666;
+}
+
+.format-select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.format-select:hover {
+    border-color: #c0c0c0;
+}
+
+.format-select:focus {
+    outline: none;
+    border-color: #2196f3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: var(--theme-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.download-btn:hover {
+    filter: brightness(0.9);
+}
+
+.download-btn:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+.btn-text {
+    flex: 1;
+    text-align: center;
+}
+
+.btn-icon {
+    font-size: 16px;
+}
+
+.status {
+    font-size: 14px;
+    min-height: 20px;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Status types */
+.status.info {
+    color: #1976d2;
+    background-color: #e3f2fd;
+}
+
+.status.success {
+    color: #2e7d32;
+    background-color: #e8f5e9;
+}
+
+.status.error {
+    color: #d32f2f;
+    background-color: #ffebee;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.container {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+.status.error {
+    animation: shake 0.4s ease-in-out;
+}
+
+/* New styles for options */
+.options-wrapper, .theme-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.options-label, .theme-label {
+    font-size: 14px;
+    color: #666666;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333333;
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.color-picker {
+    display: flex;
+    gap: 12px;
+    padding: 4px;
+}
+
+.color-option {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option.selected {
+    border-color: #000000;
+}
