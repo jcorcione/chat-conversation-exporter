@@ -5,7 +5,8 @@
   "description": "Export chat conversations in various formats (Markdown, PDF, HTML, JSON)",
   "permissions": [
     "activeTab",
-    "scripting"
+    "scripting",
+    "storage"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -28,7 +29,7 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["lib/jspdf.umd.min.js", "lib/marked.min.js"],
+      "resources": ["node_modules/jspdf/dist/jspdf.umd.min.js", "lib/marked.min.js"],
       "matches": ["<all_urls>"]
     }
   ]
