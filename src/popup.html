@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat Conversation Exporter</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Load libraries from local lib directory -->
     <script src="lib/jspdf.umd.min.js"></script>
     <script src="lib/marked.min.js"></script>
+    <script src="src/storage.js"></script>
+    <script src="src/license.js"></script>
 </head>
 <body>
     <div class="container">
@@ -40,7 +41,7 @@
         <div class="theme-wrapper">
             <label class="theme-label">Theme Color:</label>
             <div class="color-picker">
-                <div class="color-option" data-color="#2196f3" style="background-color: #2196f3"></div>
+                <div class="color-option selected" data-color="#2196f3" style="background-color: #2196f3"></div>
                 <div class="color-option" data-color="#4caf50" style="background-color: #4caf50"></div>
                 <div class="color-option" data-color="#9c27b0" style="background-color: #9c27b0"></div>
                 <div class="color-option" data-color="#ff9800" style="background-color: #ff9800"></div>
