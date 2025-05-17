@@ -5,6 +5,7 @@
   "description": "Export chat conversations in various formats (Markdown, PDF, HTML, JSON)",
   "permissions": [
     "activeTab",
+<<<<<<< HEAD
     "storage" 
     // "scripting" permission removed as it's not directly used by chrome.scripting API.
     // "storage" is kept as it's used by src/storage.js and src/license.js.
@@ -17,6 +18,10 @@
   ],
   "host_permissions": [
     "*://*.googleapis.com/" // Required for fetch calls in background.js to Google Drive API
+=======
+    "scripting",
+    "storage"
+>>>>>>> 85bff7b44266ca538b364d4f8430f0f4c2264384
   ],
   "action": {
     "default_popup": "popup.html",
