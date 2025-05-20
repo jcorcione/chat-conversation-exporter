@@ -79,9 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateStatus('Free export limit reached. Please upgrade for unlimited exports.', 'error');
                     // Optionally, redirect to a licensing page or show a modal
                     // For example: chrome.tabs.create({ url: 'YOUR_LICENSING_PAGE_URL' });
-                    return; 
+                    return;
                 }
-                
+
                 if (!isLicensed) {
                     await LicenseManager.incrementUsage();
                 }
@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 downloadBtn.disabled = true;
 
                 const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-                
+
                 if (!tab || tab.id === undefined) { // Check for undefined tab.id as well
                     throw new Error('No active tab found or tab ID is missing.');
                 }
-                
+
                 // Check if the tab is a privileged URL (e.g., chrome://, about:)
                 if (tab.url && (tab.url.startsWith('chrome://') || tab.url.startsWith('about:'))) {
                     throw new Error(`Cannot access content on this page: ${tab.url}. Try a different page.`);
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     throw new Error(`Communication error with content script: ${e.message}`);
                 }
-                
+
                 if (!response) {
                     throw new Error('No response from content script. Ensure it is injected and active.');
                 }
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                 let content, filename, type;
-                
+
                 try {
                     switch (format) {
                         case 'markdown':
@@ -146,19 +146,19 @@ document.addEventListener('DOMContentLoaded', () => {
                             filename = `${generateFilename(conversationData.title)}.md`;
                             type = 'text/markdown;charset=utf-8';
                             break;
-                            
+
                         case 'pdf':
                             content = await formatPDF(conversationData, exportOptions); // formatPDF is async
                             filename = `${generateFilename(conversationData.title)}.pdf`;
                             type = 'application/pdf';
                             break;
-                            
+
                         case 'html':
                             content = formatHTML(conversationData, exportOptions);
                             filename = `${generateFilename(conversationData.title)}.html`;
                             type = 'text/html;charset=utf-8';
                             break;
-                            
+
                         case 'json':
                             content = JSON.stringify(conversationData, null, 2);
                             filename = `${generateFilename(conversationData.title)}.json`;
@@ -243,18 +243,9 @@ function formatMarkdown(conversation, options) {
         markdown += `- **Total Messages:** ${conversation.messages.length}\n\n`;
         markdown += '---\n\n';
     }
-    
-    // Optional: Table of Contents (can be complex for Markdown, keeping simple for now)
-    // markdown += `## Table of Contents\n\n`;
-    // conversation.messages.forEach((_, index) => {
-    //     markdown += `${index + 1}. [Message #${index + 1}](#message-${index + 1})\n`;
-    // });
-    // markdown += '\n---\n\n';
-
 
     conversation.messages.forEach((msg, index) => {
         const role = msg.role === 'user' ? '👤 User' : '🤖 Assistant';
-        // markdown += `### <a name="message-${index + 1}"></a> Message #${index + 1} (${role})\n\n`; // Anchor for ToC
         markdown += `### ${role}`;
         if (options.includeTimestamps && msg.timestamp) {
              markdown += ` (${new Date(msg.timestamp).toLocaleTimeString()})`;
@@ -368,7 +359,7 @@ function formatHTML(conversation, options) {
         <div class="export-timestamp">Exported on: ${new Date(conversation.timestamp).toLocaleString()}</div>
     </div>`;
     }
-    
+
     html += `
     <div class="conversation">`;
 
@@ -403,7 +394,7 @@ async function formatPDF(conversation, options) {
         unit: 'mm',
         format: 'a4'
     });
-    
+
     doc.setProperties({
         title: conversation.title || 'Chat Conversation',
         subject: 'Chat Conversation Export',
@@ -431,7 +422,7 @@ async function formatPDF(conversation, options) {
             y = margin;
         }
     };
-    
+
     // Add Title and Metadata if enabled
     if (options.includeMetadata) {
         doc.setFontSize(styles.title.fontSize);
@@ -463,11 +454,11 @@ async function formatPDF(conversation, options) {
         if (options.includeTimestamps && msg.timestamp) {
             roleText += ` - ${new Date(msg.timestamp).toLocaleTimeString()}`;
         }
-        
+
         doc.setFontSize(roleStyle.fontSize);
         doc.setFont(undefined, roleStyle.fontStyle || 'normal');
         doc.setTextColor(roleStyle.textColor[0], roleStyle.textColor[1], roleStyle.textColor[2]);
-        
+
         const roleTextHeight = roleStyle.fontSize * 0.352778;
         addNewPageIfNeeded(roleTextHeight + 2); // Height for role text + spacing
         doc.text(roleText, bubbleX, y, { align: bubbleAlign, maxWidth: bubbleMaxWidth });
@@ -490,7 +481,7 @@ async function formatPDF(conversation, options) {
 
         // Add message content
         doc.text(contentLines, bubbleX + (isUser ? bubbleMaxWidth - 4 : 4) , y + 4, { // 4mm padding
-            align: bubbleAlign, 
+            align: bubbleAlign,
             maxWidth: bubbleMaxWidth - 8, // -8 for padding
             lineHeightFactor: styles.content.lineHeight
         });
