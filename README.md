@@ -1,5 +1,10 @@
 **Chat Conversation Exporter**
 
+## Get it on the Chrome Web Store!
+You can install the Chat Conversation Exporter from the official Chrome Web Store:
+
+https://chromewebstore.google.com/detail/chat-conversation-exporte/dmglonbbabmibnoinncpdpdodabohdfp
+
 A Chrome extension that allows you to export chat conversations from popular LLM platforms like ChatGPT, Google Gemini, and Anthropic Claude into multiple formats (Markdown, PDF, HTML, JSON).
 
 **Features**
