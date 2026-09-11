@@ -1,14 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Chat Conversation Exporter",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Export chat conversations from various LLM platforms (Markdown, PDF, HTML, JSON)",
   "permissions": [
     "activeTab",
     "storage"
-  ],
-  "host_permissions": [
-    "*://*.googleapis.com/"
   ],
   "action": {
     "default_popup": "popup.html",
@@ -22,9 +19,6 @@
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
-  },
-  "background": {
-    "service_worker": "src/background.js"
   },
   "content_scripts": [
     {
